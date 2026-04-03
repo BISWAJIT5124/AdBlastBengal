@@ -9,27 +9,18 @@
 <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:      #f6f7ff;
-    --surface: #eef0fb;
-    --card:    #ffffff;
-    --card2:   #f0f2ff;
-    --border:  rgba(100,90,200,0.12);
-    --border2: rgba(100,90,200,0.22);
-    --text:    #0e1022;
-    --muted:   #8890b0;
-    --muted2:  #4d547a;
-    --c1: #6d28d9;
-    --c2: #0891b2;
-    --c3: #d97706;
-    --c4: #db2777;
-    --c5: #059669;
-    --grad-main: linear-gradient(135deg,#6d28d9 0%,#0891b2 100%);
-    --grad-warm: linear-gradient(135deg,#d97706 0%,#db2777 100%);
-    --grad-cool: linear-gradient(135deg,#0891b2 0%,#059669 100%);
+    --bg:#f6f7ff; --surface:#eef0fb; --card:#ffffff; --card2:#f0f2ff;
+    --border:rgba(100,90,200,0.12); --border2:rgba(100,90,200,0.22);
+    --text:#0e1022; --muted:#8890b0; --muted2:#4d547a;
+    --c1:#6d28d9; --c2:#0891b2; --c3:#d97706; --c4:#db2777; --c5:#059669;
+    --grad-main:linear-gradient(135deg,#6d28d9 0%,#0891b2 100%);
+    --grad-warm:linear-gradient(135deg,#d97706 0%,#db2777 100%);
+    --grad-cool:linear-gradient(135deg,#0891b2 0%,#059669 100%);
     --grad-insta:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
-    --shadow-sm: 0 2px 12px rgba(100,90,200,0.10);
-    --shadow-md: 0 6px 28px rgba(100,90,200,0.14);
-    --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+    --grad-offer:linear-gradient(135deg,#d97706,#dc2626);
+    --shadow-sm:0 2px 12px rgba(100,90,200,0.10);
+    --shadow-md:0 6px 28px rgba(100,90,200,0.14);
+    --font:'Plus Jakarta Sans',system-ui,sans-serif;
     --r:14px; --r2:20px;
   }
   *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
@@ -47,21 +38,35 @@
   .nav-links a:hover{color:var(--text);}
   .nav-cta{background:var(--grad-main);color:#fff!important;padding:.45rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;text-decoration:none;}
 
+  /* FIRST ORDER BANNER */
+  .offer-banner{background:var(--grad-offer);color:#fff;text-align:center;padding:.55rem 1.2rem;font-size:.78rem;font-weight:700;letter-spacing:.2px;position:relative;z-index:199;margin-top:0;}
+  .offer-banner span{opacity:.85;font-weight:500;}
+  .offer-banner a{color:#fff;text-decoration:underline;margin-left:.4rem;font-weight:700;}
+
   /* HERO */
-  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5.5rem 1.2rem 3rem;position:relative;z-index:1;}
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:6rem 1.2rem 3rem;position:relative;z-index:1;}
   .badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(109,40,217,0.08);border:1px solid rgba(109,40,217,0.2);color:var(--c1);padding:.35rem .9rem;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:1.2rem;animation:up .5s ease both;}
   .hero h1{font-size:clamp(2rem,9vw,4.8rem);font-weight:800;line-height:1.08;letter-spacing:-1.5px;max-width:820px;animation:up .5s .08s ease both;}
   .hero h1 em{font-style:normal;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .hero h1 .warm{background:var(--grad-warm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .hero p{color:var(--muted2);font-size:clamp(.9rem,3.5vw,1.1rem);max-width:500px;line-height:1.75;margin:1.1rem auto 2rem;animation:up .5s .16s ease both;}
-  .hero-btns{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:340px;margin:0 auto;animation:up .5s .24s ease both;}
+  .hero p{color:var(--muted2);font-size:clamp(.9rem,3.5vw,1.1rem);max-width:500px;line-height:1.75;margin:1.1rem auto 0;animation:up .5s .16s ease both;}
+
+  /* OFFER CARD */
+  .offer-card{background:linear-gradient(135deg,rgba(217,119,6,0.08),rgba(220,38,38,0.06));border:1.5px dashed rgba(217,119,6,0.4);border-radius:var(--r2);padding:1rem 1.3rem;margin:1.5rem auto 2rem;max-width:440px;text-align:center;animation:up .5s .2s ease both;}
+  .offer-card .offer-tag{display:inline-block;background:var(--grad-offer);color:#fff;font-size:.68rem;font-weight:800;padding:.2rem .6rem;border-radius:4px;text-transform:uppercase;letter-spacing:.8px;margin-bottom:.5rem;}
+  .offer-card p{font-size:.92rem;font-weight:600;color:var(--text);}
+  .offer-card p strong{color:#dc2626;}
+  .offer-card .offer-sub{font-size:.75rem;color:var(--muted2);margin-top:.3rem;}
+
+  .hero-btns{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:340px;margin:0 auto;animation:up .5s .28s ease both;}
   .btn-main{background:var(--grad-main);color:#fff;padding:.9rem 1.5rem;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;text-align:center;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;gap:.5rem;transition:transform .2s;}
   .btn-main:active{transform:scale(.97);}
   .btn-outline{background:var(--card);color:var(--text);border:1.5px solid var(--border2);padding:.85rem 1.5rem;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:var(--shadow-sm);}
-  .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2.5rem;width:100%;max-width:340px;animation:up .5s .32s ease both;}
+
+  .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2.5rem;width:100%;max-width:340px;animation:up .5s .36s ease both;}
   .stat-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.9rem .75rem;text-align:center;box-shadow:var(--shadow-sm);}
-  .stat-num{font-size:1.5rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-  .stat-label{font-size:.7rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.5px;}
+  .stat-num{font-size:1.4rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:.68rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.5px;}
 
   /* SECTIONS */
   section{padding:3.5rem 1.2rem;position:relative;z-index:1;}
@@ -74,16 +79,15 @@
   /* WHY */
   .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:2rem;}
   .why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem;box-shadow:var(--shadow-sm);}
-  .why-card:active{transform:scale(.98);}
   .why-icon{font-size:1.5rem;margin-bottom:.6rem;display:block;}
   .why-card h3{font-size:.88rem;font-weight:700;margin-bottom:.3rem;}
   .why-card p{font-size:.78rem;color:var(--muted2);line-height:1.55;}
 
-  /* SOCIAL BAR */
+  /* SOCIAL */
   .social-bar{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2rem;}
   .soc-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;text-decoration:none;color:#fff;flex:1;justify-content:center;min-width:140px;}
-  .soc-wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 4px 16px rgba(37,211,102,.3);}
-  .soc-ig{background:var(--grad-insta);box-shadow:0 4px 16px rgba(219,39,119,.3);}
+  .soc-wa{background:linear-gradient(135deg,#25d366,#128c7e);}
+  .soc-ig{background:var(--grad-insta);}
 
   /* TABS */
   .tabs-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
@@ -95,51 +99,62 @@
   .pricing-section{display:none;}
   .pricing-section.active{display:block;}
 
-  /* AD TYPE EXPLAINER */
+  /* EXPLAINER */
   .ad-explainer{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:1.5rem;}
   .at-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;flex-wrap:wrap;}
-  .at-badge{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:.18rem .55rem;border-radius:4px;color:#fff;white-space:nowrap;}
+  .at-badge{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:.18rem .55rem;border-radius:4px;color:#fff;}
   .at-title{font-size:.9rem;font-weight:700;}
   .at-desc{font-size:.8rem;color:var(--muted2);line-height:1.6;}
-  .at-note{font-size:.75rem;margin-top:.5rem;padding:.5rem .7rem;border-radius:8px;line-height:1.5;}
+  .at-note{font-size:.74rem;margin-top:.4rem;padding:.45rem .7rem;border-radius:7px;line-height:1.5;}
   .at-yes{background:rgba(5,150,105,.08);color:#065f46;}
   .at-no{background:rgba(220,38,38,.06);color:#991b1b;margin-top:.3rem;}
 
-  /* SECTION DIVIDER */
-  .sec-div{font-size:.72rem;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:1.5px;margin:1.5rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
+  /* SECTION DIV */
+  .sec-div{font-size:.72rem;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:1.5px;margin:1.5rem 0 .75rem;display:flex;align-items:center;gap:.6rem;}
   .sec-div::after{content:'';flex:1;height:1px;background:var(--border);}
 
   /* PRICING TABLE */
-  .price-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:1rem;}
-  .price-table-wrap::-webkit-scrollbar{height:4px;}
-  .price-table-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
-  table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:400px;}
+  .ptw{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:1rem;}
+  .ptw::-webkit-scrollbar{height:4px;}
+  .ptw::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:360px;}
   thead tr{background:var(--grad-main);}
-  thead th{color:#fff;padding:.7rem .9rem;text-align:left;font-weight:700;font-size:.75rem;letter-spacing:.3px;white-space:nowrap;}
-  thead th:last-child{text-align:right;}
-  tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+  thead th{color:#fff;padding:.65rem .9rem;text-align:left;font-weight:700;font-size:.73rem;letter-spacing:.3px;white-space:nowrap;}
+  thead th:nth-child(2),thead th:nth-child(3){text-align:right;}
+
+  tbody tr{border-bottom:1px solid var(--border);cursor:pointer;transition:background .15s;}
   tbody tr:last-child{border-bottom:none;}
-  tbody tr:hover{background:var(--card2);}
+  tbody tr:hover{background:rgba(109,40,217,0.05);}
+  tbody tr:hover td.price-col{color:var(--c4);}
+  tbody tr:active{background:rgba(109,40,217,0.1);}
   tbody td{padding:.7rem .9rem;color:var(--text);}
   tbody td:first-child{font-weight:700;}
-  tbody td.price-col{font-weight:800;color:var(--c1);text-align:right;white-space:nowrap;}
-  tbody td.rate-col{color:var(--muted);font-size:.75rem;text-align:right;}
+  tbody td.rate-col{color:var(--muted);font-size:.74rem;text-align:right;}
+  tbody td.price-col{font-weight:800;color:var(--c1);text-align:right;white-space:nowrap;transition:color .15s;}
+
   .row-hot{background:linear-gradient(90deg,rgba(109,40,217,0.04),transparent);}
-  .pop-badge{background:var(--grad-main);color:#fff;font-size:.6rem;font-weight:800;padding:.1rem .4rem;border-radius:4px;text-transform:uppercase;margin-left:.4rem;vertical-align:middle;}
-  .price-foot{font-size:.75rem;color:var(--muted);margin-top:.8rem;line-height:1.5;padding-top:.75rem;border-top:1px solid var(--border);}
+  .pop-b{background:var(--grad-main);color:#fff;font-size:.58rem;font-weight:800;padding:.1rem .4rem;border-radius:4px;text-transform:uppercase;margin-left:.35rem;vertical-align:middle;}
+  .disc-b{background:var(--grad-offer);color:#fff;font-size:.58rem;font-weight:800;padding:.1rem .4rem;border-radius:4px;margin-left:.35rem;vertical-align:middle;}
+
+  .click-hint{font-size:.72rem;color:var(--muted);display:flex;align-items:center;gap:.3rem;margin-bottom:.5rem;}
+
+  .price-foot{font-size:.74rem;color:var(--muted);margin-top:.8rem;line-height:1.5;padding-top:.75rem;border-top:1px solid var(--border);}
 
   /* APP / GADS CARDS */
-  .price-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem;}
-  .p-card{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--r2);padding:1.1rem;position:relative;overflow:hidden;}
+  .p-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem;}
+  .p-card{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--r2);padding:1.1rem;position:relative;overflow:hidden;cursor:pointer;transition:border-color .2s,transform .15s;}
+  .p-card:hover{border-color:rgba(109,40,217,.35);}
+  .p-card:active{transform:scale(.97);}
   .p-card.hot{border-color:rgba(109,40,217,.35);background:linear-gradient(160deg,rgba(109,40,217,.05),var(--card2));box-shadow:0 4px 20px rgba(109,40,217,.1);}
   .hot-tag{position:absolute;top:0;right:0;background:var(--grad-main);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.5px;padding:.22rem .65rem;border-radius:0 var(--r2) 0 var(--r);text-transform:uppercase;}
   .p-qty{font-size:1.05rem;font-weight:800;}
   .p-type{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:.2rem 0 .65rem;}
-  .p-amount{font-size:1.55rem;font-weight:800;letter-spacing:-1px;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .p-amount{font-size:1.5rem;font-weight:800;letter-spacing:-1px;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .p-note{font-size:.7rem;color:var(--muted);margin-top:.15rem;}
   .p-feats{margin-top:.75rem;display:flex;flex-direction:column;gap:.28rem;list-style:none;}
   .p-feats li{font-size:.74rem;color:var(--muted2);display:flex;align-items:center;gap:.3rem;}
   .p-feats li::before{content:'✓';color:var(--c2);font-weight:800;font-size:.68rem;}
+  .p-wa{font-size:.72rem;color:var(--c5);font-weight:700;margin-top:.7rem;display:flex;align-items:center;gap:.3rem;}
 
   /* PROOF */
   .proof-list{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem;}
@@ -184,7 +199,6 @@
   /* WA FLOAT */
   .wa-float{position:fixed;bottom:1.5rem;right:1.2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:199;animation:pulse 2.5s infinite;}
 
-  /* HELPERS */
   .g-main{background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .g-warm{background:var(--grad-warm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
   .g-cool{background:var(--grad-cool);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
@@ -192,7 +206,6 @@
   @keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
   @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45);}50%{box-shadow:0 4px 32px rgba(37,211,102,.7);}}
 
-  /* DESKTOP */
   @media(min-width:768px){
     nav{padding:1rem 5%;}
     .logo{font-size:1.2rem;}
@@ -202,20 +215,23 @@
     .hero-btns{flex-direction:row;max-width:none;justify-content:center;}
     .hero-stats{grid-template-columns:repeat(4,1fr);max-width:640px;}
     .why-grid{grid-template-columns:repeat(3,1fr);gap:1.2rem;}
-    .why-card h3{font-size:.95rem;}
-    .why-card p{font-size:.84rem;}
     .proof-list{display:grid;grid-template-columns:repeat(2,1fr);}
     .how-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
-    .price-cards{grid-template-columns:repeat(3,1fr);}
+    .p-cards{grid-template-columns:repeat(3,1fr);}
     footer{display:flex;align-items:center;justify-content:space-between;text-align:left;}
     .logo-f{display:inline;margin-bottom:0;}
     .foot-links{margin-bottom:0;}
     .cta-btns{flex-direction:row;justify-content:center;max-width:none;}
-    .social-bar{flex-wrap:nowrap;}
   }
 </style>
 </head>
 <body>
+
+<!-- TOP OFFER BANNER -->
+<div class="offer-banner" style="margin-top:56px;">
+  🎉 <strong>First Order Special:</strong> <span>Get 1,00,000 YouTube Views starting at just</span> <strong>₹3,000!</strong>
+  <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20the%20First%20Order%20Special%20-%201%20Lakh%20views%20at%20%E2%82%B93%2C000!" target="_blank">Claim Now →</a>
+</div>
 
 <nav>
   <div class="logo">AdBlast Bengal</div>
@@ -236,14 +252,23 @@
   <div class="badge">⚡ Real Views · Real Proof · Google Ads Powered</div>
   <h1>Grow Your <em>YouTube</em> &<br>App With <span class="warm">Real Promotion</span></h1>
   <p>Genuine YouTube views, app installs & Google Ads campaigns — with live screen recording proof on every single order.</p>
-  <div class="hero-btns">
-    <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20to%20order%20YouTube%20views!" class="btn-main" target="_blank">💬 Order on WhatsApp</a>
-    <a href="#pricing" class="btn-outline">📋 See Pricing</a>
+
+  <!-- OFFER CARD -->
+  <div class="offer-card">
+    <div class="offer-tag">🎁 First Order Offer</div>
+    <p>Get <strong>1,00,000 YouTube Views</strong> at just <strong style="color:#dc2626;font-size:1.1em;">₹3,000</strong></p>
+    <p class="offer-sub">Regular price ₹5,000 · Limited to first-time customers only · DM to claim</p>
   </div>
+
+  <div class="hero-btns">
+    <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20to%20claim%20the%20First%20Order%20Special%20-%201%20Lakh%20views%20at%20%E2%82%B93%2C000!" class="btn-main" target="_blank">🎁 Claim First Order Offer</a>
+    <a href="#pricing" class="btn-outline">📋 See All Pricing</a>
+  </div>
+
   <div class="hero-stats">
-    <div class="stat-box"><div class="stat-num">500+</div><div class="stat-label">Orders Done</div></div>
+    <div class="stat-box"><div class="stat-num">15K+</div><div class="stat-label">Orders Completed</div></div>
     <div class="stat-box"><div class="stat-num">100%</div><div class="stat-label">Live Proof</div></div>
-    <div class="stat-box"><div class="stat-num g-cool">Google</div><div class="stat-label">Ads Powered</div></div>
+    <div class="stat-box"><div class="stat-num g-cool">Since</div><div class="stat-label">2021 — 4 Yrs</div></div>
     <div class="stat-box"><div class="stat-num g-warm">24hr</div><div class="stat-label">Delivery Start</div></div>
   </div>
 </section>
@@ -257,7 +282,7 @@
   <div class="why-grid">
     <div class="why-card"><span class="why-icon">🎯</span><h3>Google Ads Powered</h3><p>No bots. All views via official Google Ads campaigns only.</p></div>
     <div class="why-card"><span class="why-icon">🎥</span><h3>Live Screen Proof</h3><p>Screen recordings with live page refresh — every single order.</p></div>
-    <div class="why-card"><span class="why-icon">💸</span><h3>Unbeatable Prices</h3><p>Highly competitive pricing. More views for less money, always.</p></div>
+    <div class="why-card"><span class="why-icon">💸</span><h3>Unbeatable Prices</h3><p>Highly competitive rates with bulk discounts up to 15% off.</p></div>
     <div class="why-card"><span class="why-icon">📊</span><h3>Detailed Reports</h3><p>Analytics screenshots + full campaign data after delivery.</p></div>
     <div class="why-card"><span class="why-icon">📱</span><h3>App Promotion</h3><p>Real installs via Google UAC — target by country & device.</p></div>
     <div class="why-card"><span class="why-icon">⚡</span><h3>Fast Delivery</h3><p>Campaign live within 24 hours of payment confirmation.</p></div>
@@ -273,19 +298,81 @@
   <div class="sec-label">Pricing</div>
   <h2 class="sec-title">Simple,<br><span class="g-cool">transparent prices</span></h2>
   <div class="divider"></div>
-  <p class="sec-sub">All prices in INR. No hidden charges. Order directly via WhatsApp.</p>
+  <p class="sec-sub">All prices in INR. No hidden charges. <strong>Click any row to order directly on WhatsApp.</strong></p>
 
   <div class="tabs-wrap">
     <div class="tabs">
-      <button class="tab active" onclick="showTab('infeed',this)">📰 In-Feed Views</button>
-      <button class="tab" onclick="showTab('instream',this)">▶️ In-Stream Views</button>
+      <button class="tab active" onclick="showTab('instream',this)">▶️ In-Stream Views</button>
+      <button class="tab" onclick="showTab('infeed',this)">📰 In-Feed Views</button>
       <button class="tab" onclick="showTab('app',this)">📱 App Promotion</button>
       <button class="tab" onclick="showTab('gads',this)">🎯 Google Ads</button>
     </div>
   </div>
 
+  <!-- ── IN-STREAM ── -->
+  <div id="instream" class="pricing-section active">
+    <div class="tab-body">
+      <div class="ad-explainer">
+        <div class="at-head">
+          <span class="at-badge" style="background:var(--grad-warm)">In-Stream</span>
+          <span class="at-title">What is In-Stream?</span>
+        </div>
+        <p class="at-desc">Your video plays as a <strong>skippable ad before or during another YouTube video</strong>. View counted after 30 seconds of watch time. Maximum reach, great for viral growth & brand awareness.</p>
+        <p class="at-note at-yes">✅ Available: Worldwide (WW) · India · State-wise · Any Google Ads supported country</p>
+      </div>
+
+      <p class="click-hint">👆 Tap any row to order on WhatsApp instantly</p>
+
+      <div class="sec-div">🌍 Worldwide — In-Stream</div>
+      <div class="ptw">
+        <table>
+          <thead><tr><th>Views</th><th>Rate / 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C000%20Worldwide%20In-Stream%20YouTube%20views!')"><td>10,000 Views</td><td class="rate-col">₹55/1K</td><td class="price-col">₹550</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2025%2C000%20Worldwide%20In-Stream%20YouTube%20views!')"><td>25,000 Views</td><td class="rate-col">₹54/1K</td><td class="price-col">₹1,350</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2050%2C000%20Worldwide%20In-Stream%20YouTube%20views!')"><td>50,000 Views</td><td class="rate-col">₹52/1K</td><td class="price-col">₹2,600</td></tr>
+            <tr class="row-hot" onclick="wa('Hi%2C%20I%20want%201%2C00%2C000%20Worldwide%20In-Stream%20YouTube%20views!')"><td>1,00,000 Views <span class="pop-b">Best</span></td><td class="rate-col">₹50/1K</td><td class="price-col">₹5,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%205%2C00%2C000%20Worldwide%20In-Stream%20YouTube%20views!')"><td>5,00,000 Views <span class="disc-b">6% Off</span></td><td class="rate-col">₹47/1K</td><td class="price-col">₹23,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C00%2C000%20(1M)%20Worldwide%20In-Stream%20YouTube%20views!')"><td>10,00,000 Views (1M) <span class="disc-b">15% Off</span></td><td class="rate-col">₹42/1K</td><td class="price-col">₹42,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-div">🇮🇳 India Targeted — In-Stream</div>
+      <div class="ptw">
+        <table>
+          <thead><tr><th>Views</th><th>Rate / 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C000%20India%20In-Stream%20YouTube%20views!')"><td>10,000 Views</td><td class="rate-col">₹70/1K</td><td class="price-col">₹700</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2025%2C000%20India%20In-Stream%20YouTube%20views!')"><td>25,000 Views</td><td class="rate-col">₹70/1K</td><td class="price-col">₹1,750</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2050%2C000%20India%20In-Stream%20YouTube%20views!')"><td>50,000 Views</td><td class="rate-col">₹68/1K</td><td class="price-col">₹3,400</td></tr>
+            <tr class="row-hot" onclick="wa('Hi%2C%20I%20want%201%2C00%2C000%20India%20In-Stream%20YouTube%20views!')"><td>1,00,000 Views <span class="pop-b">Best</span></td><td class="rate-col">₹65/1K</td><td class="price-col">₹6,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%205%2C00%2C000%20India%20In-Stream%20YouTube%20views!')"><td>5,00,000 Views <span class="disc-b">6% Off</span></td><td class="rate-col">₹61/1K</td><td class="price-col">₹30,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C00%2C000%20(1M)%20India%20In-Stream%20YouTube%20views!')"><td>10,00,000 Views (1M) <span class="disc-b">15% Off</span></td><td class="rate-col">₹55/1K</td><td class="price-col">₹55,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="sec-div">📍 State-wise Targeted — In-Stream</div>
+      <div class="ptw">
+        <table>
+          <thead><tr><th>Views</th><th>Rate / 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C000%20State-wise%20In-Stream%20YouTube%20views!')"><td>10,000 Views</td><td class="rate-col">₹95/1K</td><td class="price-col">₹950</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2025%2C000%20State-wise%20In-Stream%20YouTube%20views!')"><td>25,000 Views</td><td class="rate-col">₹92/1K</td><td class="price-col">₹2,300</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2050%2C000%20State-wise%20In-Stream%20YouTube%20views!')"><td>50,000 Views</td><td class="rate-col">₹89/1K</td><td class="price-col">₹4,450</td></tr>
+            <tr class="row-hot" onclick="wa('Hi%2C%20I%20want%201%2C00%2C000%20State-wise%20In-Stream%20YouTube%20views!')"><td>1,00,000 Views <span class="pop-b">Best</span></td><td class="rate-col">₹85/1K</td><td class="price-col">₹8,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%205%2C00%2C000%20State-wise%20In-Stream%20YouTube%20views!')"><td>5,00,000 Views <span class="disc-b">6% Off</span></td><td class="rate-col">₹80/1K</td><td class="price-col">₹40,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C00%2C000%20(1M)%20State-wise%20In-Stream%20YouTube%20views!')"><td>10,00,000 Views (1M) <span class="disc-b">15% Off</span></td><td class="rate-col">₹72/1K</td><td class="price-col">₹72,000</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Bulk above 1M — contact for special pricing.</p>
+    </div>
+  </div>
+
   <!-- ── IN-FEED ── -->
-  <div id="infeed" class="pricing-section active">
+  <div id="infeed" class="pricing-section">
     <div class="tab-body">
       <div class="ad-explainer">
         <div class="at-head">
@@ -293,100 +380,42 @@
           <span class="at-title">What is In-Feed?</span>
         </div>
         <p class="at-desc">Your video appears as a sponsored result on YouTube's <strong>homepage, search results & suggested videos</strong>. The viewer actively clicks to watch — higher intent, better audience quality.</p>
-        <p class="at-note at-yes">✅ Available targets: India-wide · State-wise · Any Google Ads supported country</p>
-        <p class="at-note at-no">❌ Worldwide (WW) bulk targeting is not supported for In-Feed format</p>
+        <p class="at-note at-yes">✅ Available: India-wide · State-wise · Any Google Ads supported country</p>
+        <p class="at-note at-no">❌ Worldwide (WW) bulk targeting not supported for In-Feed format</p>
       </div>
 
+      <p class="click-hint">👆 Tap any row to order on WhatsApp instantly</p>
+
       <div class="sec-div">🇮🇳 India Targeted — In-Feed</div>
-      <div class="price-table-wrap">
+      <div class="ptw">
         <table>
-          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <thead><tr><th>Views</th><th>Rate / 1K</th><th>Total Price</th></tr></thead>
           <tbody>
-            <tr><td>10,000 Views</td><td class="rate-col">₹95 / 1K</td><td class="price-col">₹950</td></tr>
-            <tr><td>25,000 Views</td><td class="rate-col">₹92 / 1K</td><td class="price-col">₹2,300</td></tr>
-            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹88 / 1K</td><td class="price-col">₹4,400</td></tr>
-            <tr><td>1,00,000 Views</td><td class="rate-col">₹85 / 1K</td><td class="price-col">₹8,500</td></tr>
-            <tr><td>5,00,000 Views</td><td class="rate-col">₹80 / 1K</td><td class="price-col">₹40,000</td></tr>
-            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹75 / 1K</td><td class="price-col">₹75,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C000%20India%20In-Feed%20YouTube%20views!')"><td>10,000 Views</td><td class="rate-col">₹100/1K</td><td class="price-col">₹1,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2025%2C000%20India%20In-Feed%20YouTube%20views!')"><td>25,000 Views</td><td class="rate-col">₹96/1K</td><td class="price-col">₹2,400</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2050%2C000%20India%20In-Feed%20YouTube%20views!')"><td>50,000 Views</td><td class="rate-col">₹94/1K</td><td class="price-col">₹4,700</td></tr>
+            <tr class="row-hot" onclick="wa('Hi%2C%20I%20want%201%2C00%2C000%20India%20In-Feed%20YouTube%20views!')"><td>1,00,000 Views <span class="pop-b">Best</span></td><td class="rate-col">₹90/1K</td><td class="price-col">₹9,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%205%2C00%2C000%20India%20In-Feed%20YouTube%20views!')"><td>5,00,000 Views <span class="disc-b">6% Off</span></td><td class="rate-col">₹85/1K</td><td class="price-col">₹42,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C00%2C000%20(1M)%20India%20In-Feed%20YouTube%20views!')"><td>10,00,000 Views (1M) <span class="disc-b">15% Off</span></td><td class="rate-col">₹76/1K</td><td class="price-col">₹76,500</td></tr>
           </tbody>
         </table>
       </div>
 
       <div class="sec-div">📍 State-wise Targeted — In-Feed</div>
-      <div class="price-table-wrap">
+      <div class="ptw">
         <table>
-          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <thead><tr><th>Views</th><th>Rate / 1K</th><th>Total Price</th></tr></thead>
           <tbody>
-            <tr><td>10,000 Views</td><td class="rate-col">₹115 / 1K</td><td class="price-col">₹1,150</td></tr>
-            <tr><td>25,000 Views</td><td class="rate-col">₹112 / 1K</td><td class="price-col">₹2,800</td></tr>
-            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹108 / 1K</td><td class="price-col">₹5,400</td></tr>
-            <tr><td>1,00,000 Views</td><td class="rate-col">₹105 / 1K</td><td class="price-col">₹10,500</td></tr>
-            <tr><td>5,00,000 Views</td><td class="rate-col">₹100 / 1K</td><td class="price-col">₹50,000</td></tr>
-            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹95 / 1K</td><td class="price-col">₹95,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C000%20State-wise%20In-Feed%20YouTube%20views!')"><td>10,000 Views</td><td class="rate-col">₹120/1K</td><td class="price-col">₹1,200</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2025%2C000%20State-wise%20In-Feed%20YouTube%20views!')"><td>25,000 Views</td><td class="rate-col">₹118/1K</td><td class="price-col">₹2,950</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2050%2C000%20State-wise%20In-Feed%20YouTube%20views!')"><td>50,000 Views</td><td class="rate-col">₹116/1K</td><td class="price-col">₹5,800</td></tr>
+            <tr class="row-hot" onclick="wa('Hi%2C%20I%20want%201%2C00%2C000%20State-wise%20In-Feed%20YouTube%20views!')"><td>1,00,000 Views <span class="pop-b">Best</span></td><td class="rate-col">₹110/1K</td><td class="price-col">₹11,000</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%205%2C00%2C000%20State-wise%20In-Feed%20YouTube%20views!')"><td>5,00,000 Views <span class="disc-b">6% Off</span></td><td class="rate-col">₹103/1K</td><td class="price-col">₹51,500</td></tr>
+            <tr onclick="wa('Hi%2C%20I%20want%2010%2C00%2C000%20(1M)%20State-wise%20In-Feed%20YouTube%20views!')"><td>10,00,000 Views (1M) <span class="disc-b">15% Off</span></td><td class="rate-col">₹93/1K</td><td class="price-col">₹93,500</td></tr>
           </tbody>
         </table>
       </div>
-      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Other countries also available — ask on WhatsApp for custom quote.</p>
-    </div>
-  </div>
-
-  <!-- ── IN-STREAM ── -->
-  <div id="instream" class="pricing-section">
-    <div class="tab-body">
-      <div class="ad-explainer">
-        <div class="at-head">
-          <span class="at-badge" style="background:var(--grad-warm)">In-Stream</span>
-          <span class="at-title">What is In-Stream?</span>
-        </div>
-        <p class="at-desc">Your video plays as a <strong>skippable ad before or during another YouTube video</strong>. View is counted after the viewer watches at least 30 seconds. Maximum reach, perfect for brand awareness & viral growth.</p>
-        <p class="at-note at-yes">✅ Available targets: Worldwide (WW) · India-wide · State-wise · Any Google Ads supported country</p>
-      </div>
-
-      <div class="sec-div">🌍 Worldwide — In-Stream (Skip Ads)</div>
-      <div class="price-table-wrap">
-        <table>
-          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
-          <tbody>
-            <tr><td>10,000 Views</td><td class="rate-col">₹45 / 1K</td><td class="price-col">₹450</td></tr>
-            <tr><td>25,000 Views</td><td class="rate-col">₹44 / 1K</td><td class="price-col">₹1,100</td></tr>
-            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹43 / 1K</td><td class="price-col">₹2,150</td></tr>
-            <tr><td>1,00,000 Views</td><td class="rate-col">₹42 / 1K</td><td class="price-col">₹4,200</td></tr>
-            <tr><td>5,00,000 Views</td><td class="rate-col">₹40 / 1K</td><td class="price-col">₹20,000</td></tr>
-            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹38 / 1K</td><td class="price-col">₹38,000</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="sec-div">🇮🇳 India Targeted — In-Stream (Skip Ads)</div>
-      <div class="price-table-wrap">
-        <table>
-          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
-          <tbody>
-            <tr><td>10,000 Views</td><td class="rate-col">₹68 / 1K</td><td class="price-col">₹680</td></tr>
-            <tr><td>25,000 Views</td><td class="rate-col">₹66 / 1K</td><td class="price-col">₹1,650</td></tr>
-            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹64 / 1K</td><td class="price-col">₹3,200</td></tr>
-            <tr><td>1,00,000 Views</td><td class="rate-col">₹62 / 1K</td><td class="price-col">₹6,200</td></tr>
-            <tr><td>5,00,000 Views</td><td class="rate-col">₹60 / 1K</td><td class="price-col">₹30,000</td></tr>
-            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹58 / 1K</td><td class="price-col">₹58,000</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="sec-div">📍 State-wise Targeted — In-Stream (Skip Ads)</div>
-      <div class="price-table-wrap">
-        <table>
-          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
-          <tbody>
-            <tr><td>10,000 Views</td><td class="rate-col">₹98 / 1K</td><td class="price-col">₹980</td></tr>
-            <tr><td>25,000 Views</td><td class="rate-col">₹96 / 1K</td><td class="price-col">₹2,400</td></tr>
-            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹94 / 1K</td><td class="price-col">₹4,700</td></tr>
-            <tr><td>1,00,000 Views</td><td class="rate-col">₹92 / 1K</td><td class="price-col">₹9,200</td></tr>
-            <tr><td>5,00,000 Views</td><td class="rate-col">₹88 / 1K</td><td class="price-col">₹44,000</td></tr>
-            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹85 / 1K</td><td class="price-col">₹85,000</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Bulk orders above 1M — contact for special pricing.</p>
+      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Other countries also available — ask on WhatsApp.</p>
     </div>
   </div>
 
@@ -398,28 +427,32 @@
           <span class="at-badge" style="background:var(--grad-cool)">Google UAC</span>
           <span class="at-title">How App Promotion Works</span>
         </div>
-        <p class="at-desc">We run <strong>Google Universal App Campaigns (UAC)</strong> for your app — ads appear across Google Search, Play Store, YouTube & Display Network. Real installs from real users. No fake downloads, ever.</p>
-        <p class="at-note at-yes">✅ Targets: India · Worldwide · Any country · Android & iOS · Device type targeting</p>
+        <p class="at-desc">We run <strong>Google Universal App Campaigns (UAC)</strong> — ads appear across Google Search, Play Store, YouTube & Display Network. Real installs from real users. No fake downloads, ever.</p>
+        <p class="at-note at-yes">✅ Targets: India · Worldwide · Any country · Android & iOS · Device targeting</p>
       </div>
-      <div class="price-cards">
-        <div class="p-card">
-          <div class="p-qty">500 Installs</div><div class="p-type">App Promotion · UAC</div>
+      <p class="click-hint">👆 Tap any card to order on WhatsApp</p>
+      <div class="p-cards">
+        <div class="p-card" onclick="wa('Hi%2C%20I%20want%20500%20App%20Installs%20via%20Google%20UAC!')">
+          <div class="p-qty">500 Installs</div><div class="p-type">Google UAC</div>
           <div class="p-amount">₹1,500</div><div class="p-note">~₹3 per install</div>
           <ul class="p-feats"><li>Google UAC</li><li>India / WW</li><li>Proof Included</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
-        <div class="p-card hot">
+        <div class="p-card hot" onclick="wa('Hi%2C%20I%20want%201000%20App%20Installs%20via%20Google%20UAC!')">
           <div class="hot-tag">Popular</div>
-          <div class="p-qty">1,000 Installs</div><div class="p-type">App Promotion · UAC</div>
+          <div class="p-qty">1,000 Installs</div><div class="p-type">Google UAC</div>
           <div class="p-amount">₹2,800</div><div class="p-note">~₹2.8 per install</div>
           <ul class="p-feats"><li>Google UAC</li><li>Country Targeting</li><li>Analytics Report</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
-        <div class="p-card">
-          <div class="p-qty">2,500 Installs</div><div class="p-type">App Promotion · UAC</div>
+        <div class="p-card" onclick="wa('Hi%2C%20I%20want%202500%20App%20Installs%20via%20Google%20UAC!')">
+          <div class="p-qty">2,500 Installs</div><div class="p-type">Google UAC</div>
           <div class="p-amount">₹6,000</div><div class="p-note">~₹2.4 per install</div>
           <ul class="p-feats"><li>Google UAC</li><li>Advanced Targeting</li><li>Full Report</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
       </div>
-      <p class="price-foot">* Custom quantities available. Both Android (Play Store) & iOS (App Store) supported. Contact on WhatsApp for bulk or country-specific campaigns.</p>
+      <p class="price-foot">* Custom quantities available. Both Android & iOS supported. Contact for bulk or country-specific campaigns.</p>
     </div>
   </div>
 
@@ -431,28 +464,32 @@
           <span class="at-badge" style="background:var(--grad-warm)">Discounted Spend</span>
           <span class="at-title">How It Works</span>
         </div>
-        <p class="at-desc">You give us your ad budget — we <strong>set up and run your complete Google Ads campaign</strong> and only charge <strong>70–80% of the actual spend</strong>. You save 20–30% on every campaign with full proof and dashboard screenshots.</p>
+        <p class="at-desc">You give us your ad budget — we set up and run your complete Google Ads campaign and charge only <strong>70–80% of the actual spend</strong>. You save 20–30% on every campaign with full proof.</p>
         <p class="at-note at-yes">✅ Supported: Search · Display · YouTube · Shopping — all campaign types</p>
       </div>
-      <div class="price-cards">
-        <div class="p-card">
+      <p class="click-hint">👆 Tap any card to order on WhatsApp</p>
+      <div class="p-cards">
+        <div class="p-card" onclick="wa('Hi%2C%20I%20want%20to%20run%20a%20%E2%82%B91%2C000%20Google%20Ads%20campaign%20at%20discounted%20rates!')">
           <div class="p-qty">₹1,000 Budget</div><div class="p-type">You Pay Only</div>
           <div class="p-amount">₹700–800</div><div class="p-note">You save ₹200–300</div>
-          <ul class="p-feats"><li>Full Campaign Setup</li><li>Ad Copy Included</li><li>Final Report</li></ul>
+          <ul class="p-feats"><li>Full Setup</li><li>Ad Copy Included</li><li>Final Report</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
-        <div class="p-card hot">
+        <div class="p-card hot" onclick="wa('Hi%2C%20I%20want%20to%20run%20a%20%E2%82%B93%2C000%20Google%20Ads%20campaign%20at%20discounted%20rates!')">
           <div class="hot-tag">Popular</div>
           <div class="p-qty">₹3,000 Budget</div><div class="p-type">You Pay Only</div>
           <div class="p-amount">₹2,100–2,400</div><div class="p-note">You save ₹600–900</div>
-          <ul class="p-feats"><li>Full Campaign Setup</li><li>Optimization</li><li>Mid + Final Report</li></ul>
+          <ul class="p-feats"><li>Full Setup</li><li>Optimization</li><li>Mid + Final Report</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
-        <div class="p-card">
+        <div class="p-card" onclick="wa('Hi%2C%20I%20want%20a%20custom%20Google%20Ads%20campaign%20at%20discounted%20rates!')">
           <div class="p-qty">₹5,000+ Budget</div><div class="p-type">Custom</div>
           <div class="p-amount">Custom</div><div class="p-note">Contact for quote</div>
           <ul class="p-feats"><li>Dedicated Management</li><li>Weekly Reports</li><li>WhatsApp Support</li></ul>
+          <div class="p-wa">💬 Tap to Order</div>
         </div>
       </div>
-      <p class="price-foot">* Example: ₹3,000 ad budget → you pay only ₹2,100–2,400, we spend the full ₹3,000 on your campaign. Dashboard screenshots shared as proof of actual spend.</p>
+      <p class="price-foot">* Example: ₹3,000 budget → you pay ₹2,100–2,400, we spend the full ₹3,000. Dashboard screenshots shared as spend proof.</p>
     </div>
   </div>
 </section>
@@ -463,8 +500,8 @@
   <h2 class="sec-title">You see <span class="g-cool">exactly</span><br>what you're getting</h2>
   <div class="divider"></div>
   <div class="proof-list">
-    <div class="proof-item"><div class="proof-emoji">🎥</div><div><h4>Screen Recording + Live Page Refresh</h4><p>Watch your view count go up live — with page refresh so you know it's 100% real, not edited footage.</p></div></div>
-    <div class="proof-item"><div class="proof-emoji">📊</div><div><h4>Google Ads Dashboard Screenshots</h4><p>Full campaign screenshots — impressions, views, spend — everything shared with you after delivery.</p></div></div>
+    <div class="proof-item"><div class="proof-emoji">🎥</div><div><h4>Screen Recording + Live Page Refresh</h4><p>Watch your view count go up live — page refresh proves it's 100% real, not edited footage.</p></div></div>
+    <div class="proof-item"><div class="proof-emoji">📊</div><div><h4>Google Ads Dashboard Screenshots</h4><p>Full campaign screenshots — impressions, views, spend — everything shared after delivery.</p></div></div>
     <div class="proof-item"><div class="proof-emoji">📈</div><div><h4>YouTube Analytics Proof</h4><p>YouTube Studio showing traffic source as "YouTube Ads" — undeniable, verifiable proof every time.</p></div></div>
     <div class="proof-item"><div class="proof-emoji">💬</div><div><h4>Real-Time WhatsApp Updates</h4><p>Updates from order start to final delivery. No ghosting. Fast replies, always.</p></div></div>
   </div>
@@ -487,11 +524,11 @@
     </div>
     <div class="quick-order">
       <h3>⚡ Quick Order</h3>
-      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Feed%20YouTube%20Views!" class="qo-btn qo-wa" target="_blank">📰 In-Feed Views</a>
-      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Stream%20YouTube%20Views!" class="qo-btn qo-in" target="_blank">▶️ In-Stream Views</a>
+      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Stream%20YouTube%20Views!" class="qo-btn qo-wa" target="_blank">▶️ In-Stream Views</a>
+      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Feed%20YouTube%20Views!" class="qo-btn qo-in" target="_blank">📰 In-Feed Views</a>
       <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20App%20Promotion%20via%20Google%20UAC!" class="qo-btn qo-app" target="_blank">📱 App Promotion</a>
       <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20Google%20Ads%20at%20discounted%20rates!" class="qo-btn qo-gad" target="_blank">🎯 Google Ads Campaign</a>
-      <p class="qo-hint">⚡ Avg reply under 1 hr · 📍 Serving clients across India</p>
+      <p class="qo-hint">⚡ Avg reply under 1 hr · 📍 Serving clients across India since 2021</p>
     </div>
   </div>
 </section>
@@ -522,6 +559,7 @@
 </footer>
 
 <script>
+  function wa(msg){ window.open('https://wa.me/919547803436?text=' + msg, '_blank'); }
   function showTab(id,el){
     document.querySelectorAll('.pricing-section').forEach(s=>s.classList.remove('active'));
     document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
