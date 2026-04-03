@@ -18,210 +18,200 @@
     --text:    #0e1022;
     --muted:   #8890b0;
     --muted2:  #4d547a;
-
     --c1: #6d28d9;
     --c2: #0891b2;
     --c3: #d97706;
     --c4: #db2777;
     --c5: #059669;
-
-    --grad-main: linear-gradient(135deg, #6d28d9 0%, #0891b2 100%);
-    --grad-warm: linear-gradient(135deg, #d97706 0%, #db2777 100%);
-    --grad-cool: linear-gradient(135deg, #0891b2 0%, #059669 100%);
-    --grad-insta: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
-
+    --grad-main: linear-gradient(135deg,#6d28d9 0%,#0891b2 100%);
+    --grad-warm: linear-gradient(135deg,#d97706 0%,#db2777 100%);
+    --grad-cool: linear-gradient(135deg,#0891b2 0%,#059669 100%);
+    --grad-insta:linear-gradient(135deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888);
     --shadow-sm: 0 2px 12px rgba(100,90,200,0.10);
     --shadow-md: 0 6px 28px rgba(100,90,200,0.14);
-
-    --font: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --r: 14px; --r2: 20px;
+    --font:'Plus Jakarta Sans',system-ui,-apple-system,sans-serif;
+    --r:14px; --r2:20px;
   }
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{background:var(--bg);color:var(--text);font-family:var(--font);overflow-x:hidden;-webkit-font-smoothing:antialiased;}
+  body::after{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;
+    background:radial-gradient(ellipse 55% 45% at 10% 10%,rgba(109,40,217,0.06) 0%,transparent 60%),
+               radial-gradient(ellipse 45% 40% at 90% 80%,rgba(8,145,178,0.05) 0%,transparent 60%);}
 
-  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--bg); color: var(--text); font-family: var(--font); overflow-x: hidden; -webkit-font-smoothing: antialiased; }
+  /* NAV */
+  nav{position:fixed;top:0;left:0;right:0;z-index:200;display:flex;align-items:center;justify-content:space-between;padding:.9rem 1.2rem;background:rgba(246,247,255,0.92);backdrop-filter:blur(20px);border-bottom:1px solid var(--border);box-shadow:0 1px 12px rgba(100,90,200,0.07);}
+  .logo{font-size:1.05rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .nav-links{display:none;gap:1.8rem;list-style:none;}
+  .nav-links a{color:var(--muted2);text-decoration:none;font-size:.88rem;font-weight:500;transition:color .2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-cta{background:var(--grad-main);color:#fff!important;padding:.45rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;text-decoration:none;}
 
-  body::after {
-    content: ''; position: fixed; inset: 0; pointer-events: none; z-index: 0;
-    background:
-      radial-gradient(ellipse 55% 45% at 10% 10%, rgba(109,40,217,0.06) 0%, transparent 60%),
-      radial-gradient(ellipse 45% 40% at 90% 80%, rgba(8,145,178,0.05) 0%, transparent 60%);
-  }
+  /* HERO */
+  .hero{min-height:100svh;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:5.5rem 1.2rem 3rem;position:relative;z-index:1;}
+  .badge{display:inline-flex;align-items:center;gap:.35rem;background:rgba(109,40,217,0.08);border:1px solid rgba(109,40,217,0.2);color:var(--c1);padding:.35rem .9rem;border-radius:50px;font-size:.72rem;font-weight:700;letter-spacing:.8px;text-transform:uppercase;margin-bottom:1.2rem;animation:up .5s ease both;}
+  .hero h1{font-size:clamp(2rem,9vw,4.8rem);font-weight:800;line-height:1.08;letter-spacing:-1.5px;max-width:820px;animation:up .5s .08s ease both;}
+  .hero h1 em{font-style:normal;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero h1 .warm{background:var(--grad-warm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .hero p{color:var(--muted2);font-size:clamp(.9rem,3.5vw,1.1rem);max-width:500px;line-height:1.75;margin:1.1rem auto 2rem;animation:up .5s .16s ease both;}
+  .hero-btns{display:flex;flex-direction:column;gap:.75rem;width:100%;max-width:340px;margin:0 auto;animation:up .5s .24s ease both;}
+  .btn-main{background:var(--grad-main);color:#fff;padding:.9rem 1.5rem;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;text-align:center;box-shadow:var(--shadow-md);display:flex;align-items:center;justify-content:center;gap:.5rem;transition:transform .2s;}
+  .btn-main:active{transform:scale(.97);}
+  .btn-outline{background:var(--card);color:var(--text);border:1.5px solid var(--border2);padding:.85rem 1.5rem;border-radius:50px;font-weight:600;font-size:.95rem;text-decoration:none;text-align:center;display:flex;align-items:center;justify-content:center;gap:.5rem;box-shadow:var(--shadow-sm);}
+  .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:2.5rem;width:100%;max-width:340px;animation:up .5s .32s ease both;}
+  .stat-box{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:.9rem .75rem;text-align:center;box-shadow:var(--shadow-sm);}
+  .stat-num{font-size:1.5rem;font-weight:800;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .stat-label{font-size:.7rem;color:var(--muted);margin-top:.2rem;text-transform:uppercase;letter-spacing:.5px;}
 
-  /* ── NAV ── */
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 200;
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0.9rem 1.2rem;
-    background: rgba(246,247,255,0.92); backdrop-filter: blur(20px);
-    border-bottom: 1px solid var(--border);
-    box-shadow: 0 1px 12px rgba(100,90,200,0.07);
-  }
-  .logo { font-size: 1.05rem; font-weight: 800; background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .nav-links { display: none; gap: 1.8rem; list-style: none; }
-  .nav-links a { color: var(--muted2); text-decoration: none; font-size: 0.88rem; font-weight: 500; transition: color .2s; }
-  .nav-links a:hover { color: var(--text); }
-  .nav-cta { background: var(--grad-main); color: #fff !important; padding: 0.45rem 1.1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-decoration: none; }
+  /* SECTIONS */
+  section{padding:3.5rem 1.2rem;position:relative;z-index:1;}
+  .surface-bg{background:var(--surface);}
+  .sec-label{font-size:.7rem;font-weight:700;text-transform:uppercase;letter-spacing:2px;color:var(--c2);margin-bottom:.5rem;}
+  .sec-title{font-size:clamp(1.6rem,6vw,2.6rem);font-weight:800;letter-spacing:-1px;line-height:1.12;}
+  .sec-sub{color:var(--muted2);font-size:.92rem;line-height:1.7;margin-top:.6rem;max-width:480px;}
+  .divider{width:40px;height:3px;border-radius:2px;background:var(--grad-main);margin:.8rem 0;}
 
-  /* ── HERO ── */
-  .hero { min-height: 100svh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 5.5rem 1.2rem 3rem; position: relative; z-index: 1; }
-  .badge { display: inline-flex; align-items: center; gap: 0.35rem; background: rgba(109,40,217,0.08); border: 1px solid rgba(109,40,217,0.2); color: var(--c1); padding: 0.35rem 0.9rem; border-radius: 50px; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.8px; text-transform: uppercase; margin-bottom: 1.2rem; animation: up .5s ease both; }
-  .hero h1 { font-size: clamp(2rem, 9vw, 4.8rem); font-weight: 800; line-height: 1.08; letter-spacing: -1.5px; max-width: 820px; animation: up .5s .08s ease both; }
-  .hero h1 em { font-style: normal; background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero h1 .warm { background: var(--grad-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .hero p { color: var(--muted2); font-size: clamp(0.9rem, 3.5vw, 1.1rem); max-width: 500px; line-height: 1.75; margin: 1.1rem auto 2rem; animation: up .5s .16s ease both; }
-  .hero-btns { display: flex; flex-direction: column; gap: 0.75rem; width: 100%; max-width: 340px; margin: 0 auto; animation: up .5s .24s ease both; }
-  .btn-main { background: var(--grad-main); color: #fff; padding: 0.9rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; text-align: center; box-shadow: var(--shadow-md); display: flex; align-items: center; justify-content: center; gap: 0.5rem; transition: transform .2s, box-shadow .2s; }
-  .btn-main:active { transform: scale(0.97); }
-  .btn-outline { background: var(--card); color: var(--text); border: 1.5px solid var(--border2); padding: 0.85rem 1.5rem; border-radius: 50px; font-weight: 600; font-size: 0.95rem; text-decoration: none; text-align: center; display: flex; align-items: center; justify-content: center; gap: 0.5rem; box-shadow: var(--shadow-sm); }
+  /* WHY */
+  .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;margin-top:2rem;}
+  .why-card{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem;box-shadow:var(--shadow-sm);}
+  .why-card:active{transform:scale(.98);}
+  .why-icon{font-size:1.5rem;margin-bottom:.6rem;display:block;}
+  .why-card h3{font-size:.88rem;font-weight:700;margin-bottom:.3rem;}
+  .why-card p{font-size:.78rem;color:var(--muted2);line-height:1.55;}
 
-  .hero-stats { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.75rem; margin-top: 2.5rem; width: 100%; max-width: 340px; animation: up .5s .32s ease both; }
-  .stat-box { background: var(--card); border: 1px solid var(--border); border-radius: var(--r); padding: 0.9rem 0.75rem; text-align: center; box-shadow: var(--shadow-sm); }
-  .stat-num { font-size: 1.5rem; font-weight: 800; background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .stat-label { font-size: 0.7rem; color: var(--muted); margin-top: 0.2rem; text-transform: uppercase; letter-spacing: 0.5px; }
+  /* SOCIAL BAR */
+  .social-bar{display:flex;gap:.6rem;flex-wrap:wrap;margin-top:2rem;}
+  .soc-btn{display:flex;align-items:center;gap:.5rem;padding:.65rem 1.1rem;border-radius:50px;font-size:.85rem;font-weight:700;text-decoration:none;color:#fff;flex:1;justify-content:center;min-width:140px;}
+  .soc-wa{background:linear-gradient(135deg,#25d366,#128c7e);box-shadow:0 4px 16px rgba(37,211,102,.3);}
+  .soc-ig{background:var(--grad-insta);box-shadow:0 4px 16px rgba(219,39,119,.3);}
 
-  /* ── SECTIONS ── */
-  section { padding: 3.5rem 1.2rem; position: relative; z-index: 1; }
-  .surface-bg { background: var(--surface); }
-  .sec-label { font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; color: var(--c2); margin-bottom: 0.5rem; }
-  .sec-title { font-size: clamp(1.6rem, 6vw, 2.6rem); font-weight: 800; letter-spacing: -1px; line-height: 1.12; }
-  .sec-sub { color: var(--muted2); font-size: 0.92rem; line-height: 1.7; margin-top: 0.6rem; max-width: 480px; }
-  .divider { width: 40px; height: 3px; border-radius: 2px; background: var(--grad-main); margin: 0.8rem 0; }
+  /* TABS */
+  .tabs-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;padding-bottom:2px;}
+  .tabs-wrap::-webkit-scrollbar{display:none;}
+  .tabs{display:flex;gap:.4rem;margin:1.5rem 0 0;width:max-content;min-width:100%;}
+  .tab{padding:.5rem 1rem;border-radius:10px 10px 0 0;border:1.5px solid var(--border);border-bottom:none;background:var(--surface);color:var(--muted2);font-size:.8rem;font-weight:600;cursor:pointer;transition:all .2s;font-family:var(--font);white-space:nowrap;}
+  .tab.active{background:var(--card);border-color:var(--border2);color:var(--c1);font-weight:700;}
+  .tab-body{background:var(--card);border:1.5px solid var(--border2);border-radius:0 var(--r2) var(--r2) var(--r2);padding:1.5rem 1.2rem;box-shadow:var(--shadow-sm);}
+  .pricing-section{display:none;}
+  .pricing-section.active{display:block;}
 
-  /* ── WHY ── */
-  .why-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.75rem; margin-top: 2rem; }
-  .why-card { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 1.2rem; box-shadow: var(--shadow-sm); transition: box-shadow .3s, transform .3s; }
-  .why-card:active { transform: scale(0.98); }
-  .why-icon { font-size: 1.5rem; margin-bottom: 0.6rem; display: block; }
-  .why-card h3 { font-size: 0.88rem; font-weight: 700; margin-bottom: 0.3rem; color: var(--text); }
-  .why-card p { font-size: 0.78rem; color: var(--muted2); line-height: 1.55; }
+  /* AD TYPE EXPLAINER */
+  .ad-explainer{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--r);padding:1rem 1.1rem;margin-bottom:1.5rem;}
+  .at-head{display:flex;align-items:center;gap:.5rem;margin-bottom:.4rem;flex-wrap:wrap;}
+  .at-badge{font-size:.65rem;font-weight:800;text-transform:uppercase;letter-spacing:.8px;padding:.18rem .55rem;border-radius:4px;color:#fff;white-space:nowrap;}
+  .at-title{font-size:.9rem;font-weight:700;}
+  .at-desc{font-size:.8rem;color:var(--muted2);line-height:1.6;}
+  .at-note{font-size:.75rem;margin-top:.5rem;padding:.5rem .7rem;border-radius:8px;line-height:1.5;}
+  .at-yes{background:rgba(5,150,105,.08);color:#065f46;}
+  .at-no{background:rgba(220,38,38,.06);color:#991b1b;margin-top:.3rem;}
 
-  /* ── PRICING TABS ── */
-  .tabs-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; scrollbar-width: none; padding-bottom: 2px; }
-  .tabs-wrap::-webkit-scrollbar { display: none; }
-  .tabs { display: flex; gap: 0.4rem; margin: 1.5rem 0 0; width: max-content; min-width: 100%; }
-  .tab { padding: 0.5rem 1rem; border-radius: 10px 10px 0 0; border: 1.5px solid var(--border); border-bottom: none; background: var(--surface); color: var(--muted2); font-size: 0.8rem; font-weight: 600; cursor: pointer; transition: all .2s; font-family: var(--font); white-space: nowrap; }
-  .tab.active { background: var(--card); border-color: var(--border2); color: var(--c1); font-weight: 700; }
+  /* SECTION DIVIDER */
+  .sec-div{font-size:.72rem;font-weight:700;color:var(--c1);text-transform:uppercase;letter-spacing:1.5px;margin:1.5rem 0 .8rem;display:flex;align-items:center;gap:.6rem;}
+  .sec-div::after{content:'';flex:1;height:1px;background:var(--border);}
 
-  .tab-body { background: var(--card); border: 1.5px solid var(--border2); border-radius: 0 var(--r2) var(--r2) var(--r2); padding: 1.5rem 1.2rem; box-shadow: var(--shadow-sm); }
+  /* PRICING TABLE */
+  .price-table-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;border-radius:var(--r);border:1.5px solid var(--border);margin-bottom:1rem;}
+  .price-table-wrap::-webkit-scrollbar{height:4px;}
+  .price-table-wrap::-webkit-scrollbar-thumb{background:var(--border2);border-radius:2px;}
+  table{width:100%;border-collapse:collapse;font-size:.82rem;min-width:400px;}
+  thead tr{background:var(--grad-main);}
+  thead th{color:#fff;padding:.7rem .9rem;text-align:left;font-weight:700;font-size:.75rem;letter-spacing:.3px;white-space:nowrap;}
+  thead th:last-child{text-align:right;}
+  tbody tr{border-bottom:1px solid var(--border);transition:background .15s;}
+  tbody tr:last-child{border-bottom:none;}
+  tbody tr:hover{background:var(--card2);}
+  tbody td{padding:.7rem .9rem;color:var(--text);}
+  tbody td:first-child{font-weight:700;}
+  tbody td.price-col{font-weight:800;color:var(--c1);text-align:right;white-space:nowrap;}
+  tbody td.rate-col{color:var(--muted);font-size:.75rem;text-align:right;}
+  .row-hot{background:linear-gradient(90deg,rgba(109,40,217,0.04),transparent);}
+  .pop-badge{background:var(--grad-main);color:#fff;font-size:.6rem;font-weight:800;padding:.1rem .4rem;border-radius:4px;text-transform:uppercase;margin-left:.4rem;vertical-align:middle;}
+  .price-foot{font-size:.75rem;color:var(--muted);margin-top:.8rem;line-height:1.5;padding-top:.75rem;border-top:1px solid var(--border);}
 
-  .pricing-section { display: none; }
-  .pricing-section.active { display: block; }
+  /* APP / GADS CARDS */
+  .price-cards{display:grid;grid-template-columns:repeat(2,1fr);gap:.75rem;margin-top:1rem;}
+  .p-card{background:var(--card2);border:1.5px solid var(--border);border-radius:var(--r2);padding:1.1rem;position:relative;overflow:hidden;}
+  .p-card.hot{border-color:rgba(109,40,217,.35);background:linear-gradient(160deg,rgba(109,40,217,.05),var(--card2));box-shadow:0 4px 20px rgba(109,40,217,.1);}
+  .hot-tag{position:absolute;top:0;right:0;background:var(--grad-main);color:#fff;font-size:.58rem;font-weight:800;letter-spacing:.5px;padding:.22rem .65rem;border-radius:0 var(--r2) 0 var(--r);text-transform:uppercase;}
+  .p-qty{font-size:1.05rem;font-weight:800;}
+  .p-type{font-size:.68rem;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin:.2rem 0 .65rem;}
+  .p-amount{font-size:1.55rem;font-weight:800;letter-spacing:-1px;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .p-note{font-size:.7rem;color:var(--muted);margin-top:.15rem;}
+  .p-feats{margin-top:.75rem;display:flex;flex-direction:column;gap:.28rem;list-style:none;}
+  .p-feats li{font-size:.74rem;color:var(--muted2);display:flex;align-items:center;gap:.3rem;}
+  .p-feats li::before{content:'✓';color:var(--c2);font-weight:800;font-size:.68rem;}
 
-  /* ad type explainer */
-  .ad-explainer {
-    display: grid; grid-template-columns: 1fr; gap: 0.75rem; margin-bottom: 1.5rem;
-  }
-  .ad-type-card {
-    border-radius: var(--r); padding: 1rem 1.1rem;
-    border: 1.5px solid var(--border);
-    background: var(--card2);
-  }
-  .ad-type-card .at-head { display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.35rem; }
-  .at-badge { font-size: 0.65rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.8px; padding: 0.18rem 0.55rem; border-radius: 4px; color: #fff; }
-  .at-title { font-size: 0.88rem; font-weight: 700; }
-  .at-desc { font-size: 0.78rem; color: var(--muted2); line-height: 1.55; }
-  .at-targets { font-size: 0.72rem; color: var(--muted); margin-top: 0.4rem; }
-  .at-targets span { font-weight: 600; color: var(--c1); }
+  /* PROOF */
+  .proof-list{display:flex;flex-direction:column;gap:.75rem;margin-top:2rem;}
+  .proof-item{background:var(--card);border:1px solid var(--border);border-radius:var(--r2);padding:1.2rem;display:flex;gap:1rem;align-items:flex-start;box-shadow:var(--shadow-sm);}
+  .proof-emoji{font-size:1.7rem;flex-shrink:0;}
+  .proof-item h4{font-size:.92rem;font-weight:700;margin-bottom:.3rem;}
+  .proof-item p{font-size:.8rem;color:var(--muted2);line-height:1.6;}
 
-  /* price cards */
-  .price-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 0.65rem; }
-  .price-card { background: var(--card2); border: 1.5px solid var(--border); border-radius: var(--r2); padding: 1.1rem; position: relative; overflow: hidden; transition: box-shadow .2s; }
-  .price-card.hot { border-color: rgba(109,40,217,0.35); background: linear-gradient(160deg, rgba(109,40,217,0.05), var(--card2)); box-shadow: 0 4px 20px rgba(109,40,217,0.1); }
-  .hot-tag { position: absolute; top: 0; right: 0; background: var(--grad-main); color: #fff; font-size: 0.58rem; font-weight: 800; letter-spacing: 0.5px; padding: 0.22rem 0.65rem; border-radius: 0 var(--r2) 0 var(--r); text-transform: uppercase; }
-  .price-qty { font-size: 1.05rem; font-weight: 800; }
-  .price-type { font-size: 0.68rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.5px; margin: 0.2rem 0 0.65rem; }
-  .price-amount { font-size: 1.55rem; font-weight: 800; letter-spacing: -1px; background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .price-note { font-size: 0.7rem; color: var(--muted); margin-top: 0.15rem; }
-  .price-feats { margin-top: 0.75rem; display: flex; flex-direction: column; gap: 0.28rem; list-style: none; }
-  .price-feats li { font-size: 0.74rem; color: var(--muted2); display: flex; align-items: center; gap: 0.3rem; }
-  .price-feats li::before { content: '✓'; color: var(--c2); font-weight: 800; font-size: 0.68rem; flex-shrink: 0; }
-  .price-foot { font-size: 0.74rem; color: var(--muted); margin-top: 1rem; line-height: 1.5; padding-top: 0.75rem; border-top: 1px solid var(--border); }
+  /* HOW */
+  .steps{display:flex;flex-direction:column;margin-top:2rem;}
+  .step-item{display:flex;gap:1rem;align-items:flex-start;padding-bottom:1.5rem;position:relative;}
+  .step-item:not(:last-child)::before{content:'';position:absolute;left:19px;top:40px;width:2px;bottom:0;background:linear-gradient(to bottom,rgba(109,40,217,.25),transparent);}
+  .step-dot{width:38px;height:38px;border-radius:50%;flex-shrink:0;background:var(--grad-main);display:flex;align-items:center;justify-content:center;font-weight:800;font-size:.85rem;color:#fff;box-shadow:0 4px 14px rgba(109,40,217,.3);}
+  .step-item h4{font-size:.95rem;font-weight:700;margin-bottom:.3rem;}
+  .step-item p{font-size:.82rem;color:var(--muted2);line-height:1.6;}
 
-  /* section dividers within tab */
-  .sec-divider { font-size: 0.75rem; font-weight: 700; color: var(--c1); text-transform: uppercase; letter-spacing: 1.5px; margin: 1.5rem 0 0.8rem; display: flex; align-items: center; gap: 0.6rem; }
-  .sec-divider::after { content: ''; flex: 1; height: 1px; background: var(--border); }
+  /* QUICK ORDER */
+  .quick-order{background:var(--card);border:1.5px solid var(--border2);border-radius:var(--r2);padding:1.5rem;margin-top:2rem;box-shadow:var(--shadow-md);}
+  .quick-order h3{font-size:1rem;font-weight:700;margin-bottom:1.2rem;}
+  .qo-btn{display:flex;align-items:center;gap:.6rem;padding:.85rem 1.2rem;border-radius:var(--r);margin-bottom:.6rem;text-decoration:none;color:#fff;font-size:.85rem;font-weight:600;transition:opacity .2s,transform .15s;}
+  .qo-btn:active{transform:scale(.97);opacity:.9;}
+  .qo-wa{background:linear-gradient(135deg,#25d366,#128c7e);}
+  .qo-in{background:linear-gradient(135deg,#db2777,#6d28d9);}
+  .qo-app{background:linear-gradient(135deg,#0891b2,#6d28d9);}
+  .qo-gad{background:linear-gradient(135deg,#d97706,#db2777);}
+  .qo-hint{font-size:.75rem;color:var(--muted);text-align:center;margin-top:.8rem;line-height:1.6;}
 
-  /* ── PROOF ── */
-  .proof-list { display: flex; flex-direction: column; gap: 0.75rem; margin-top: 2rem; }
-  .proof-item { background: var(--card); border: 1px solid var(--border); border-radius: var(--r2); padding: 1.2rem; display: flex; gap: 1rem; align-items: flex-start; box-shadow: var(--shadow-sm); }
-  .proof-emoji { font-size: 1.7rem; flex-shrink: 0; }
-  .proof-item h4 { font-size: 0.92rem; font-weight: 700; margin-bottom: 0.3rem; }
-  .proof-item p { font-size: 0.8rem; color: var(--muted2); line-height: 1.6; }
+  /* CTA */
+  .cta-wrap{background:linear-gradient(135deg,rgba(109,40,217,.06),rgba(8,145,178,.04));border:1.5px solid rgba(109,40,217,.15);border-radius:var(--r2);padding:2.5rem 1.5rem;text-align:center;}
+  .cta-wrap h2{font-size:clamp(1.5rem,6vw,2.4rem);font-weight:800;letter-spacing:-1px;line-height:1.15;}
+  .cta-wrap p{color:var(--muted2);font-size:.9rem;margin:.8rem 0 2rem;line-height:1.7;}
+  .cta-btns{display:flex;flex-direction:column;gap:.75rem;max-width:320px;margin:0 auto;}
+  .btn-wa{background:linear-gradient(135deg,#25d366,#128c7e);color:#fff;padding:.9rem 1.5rem;border-radius:50px;font-weight:700;font-size:.95rem;text-decoration:none;text-align:center;box-shadow:0 4px 20px rgba(37,211,102,.3);display:flex;align-items:center;justify-content:center;gap:.5rem;}
 
-  /* ── HOW ── */
-  .steps { display: flex; flex-direction: column; margin-top: 2rem; }
-  .step-item { display: flex; gap: 1rem; align-items: flex-start; padding-bottom: 1.5rem; position: relative; }
-  .step-item:not(:last-child)::before { content: ''; position: absolute; left: 19px; top: 40px; width: 2px; bottom: 0; background: linear-gradient(to bottom, rgba(109,40,217,0.25), transparent); }
-  .step-dot { width: 38px; height: 38px; border-radius: 50%; flex-shrink: 0; background: var(--grad-main); display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 0.85rem; color: #fff; box-shadow: 0 4px 14px rgba(109,40,217,0.3); }
-  .step-item h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 0.3rem; }
-  .step-item p { font-size: 0.82rem; color: var(--muted2); line-height: 1.6; }
+  /* FOOTER */
+  footer{background:var(--text);color:rgba(255,255,255,.75);padding:2rem 1.2rem;text-align:center;position:relative;z-index:1;}
+  .logo-f{font-size:1rem;font-weight:800;display:block;margin-bottom:1rem;background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .foot-links{display:flex;justify-content:center;flex-wrap:wrap;gap:1.2rem;list-style:none;margin-bottom:1rem;}
+  .foot-links a{color:rgba(255,255,255,.55);text-decoration:none;font-size:.82rem;}
+  .foot-copy{font-size:.75rem;color:rgba(255,255,255,.35);}
 
-  /* quick order */
-  .quick-order { background: var(--card); border: 1.5px solid var(--border2); border-radius: var(--r2); padding: 1.5rem; margin-top: 2rem; box-shadow: var(--shadow-md); }
-  .quick-order h3 { font-size: 1rem; font-weight: 700; margin-bottom: 1.2rem; }
-  .qo-btn { display: flex; align-items: center; gap: 0.6rem; padding: 0.85rem 1.2rem; border-radius: var(--r); margin-bottom: 0.6rem; text-decoration: none; color: #fff; font-size: 0.85rem; font-weight: 600; transition: opacity .2s, transform .15s; }
-  .qo-btn:active { transform: scale(0.97); opacity: 0.9; }
-  .qo-wa   { background: linear-gradient(135deg,#25d366,#128c7e); }
-  .qo-in   { background: linear-gradient(135deg,#db2777,#6d28d9); }
-  .qo-app  { background: linear-gradient(135deg,#0891b2,#6d28d9); }
-  .qo-gad  { background: linear-gradient(135deg,#d97706,#db2777); }
-  .qo-hint { font-size: 0.75rem; color: var(--muted); text-align: center; margin-top: 0.8rem; line-height: 1.6; }
+  /* WA FLOAT */
+  .wa-float{position:fixed;bottom:1.5rem;right:1.2rem;width:52px;height:52px;border-radius:50%;background:linear-gradient(135deg,#25d366,#128c7e);display:flex;align-items:center;justify-content:center;font-size:1.4rem;text-decoration:none;box-shadow:0 4px 20px rgba(37,211,102,.45);z-index:199;animation:pulse 2.5s infinite;}
 
-  /* ── SOCIAL BAR ── */
-  .social-bar { display: flex; gap: 0.6rem; flex-wrap: wrap; margin-top: 2rem; }
-  .soc-btn { display: flex; align-items: center; gap: 0.5rem; padding: 0.65rem 1.1rem; border-radius: 50px; font-size: 0.85rem; font-weight: 700; text-decoration: none; color: #fff; transition: transform .2s, box-shadow .2s; flex: 1; justify-content: center; min-width: 140px; }
-  .soc-btn:active { transform: scale(0.97); }
-  .soc-wa { background: linear-gradient(135deg,#25d366,#128c7e); box-shadow: 0 4px 16px rgba(37,211,102,0.3); }
-  .soc-ig { background: var(--grad-insta); box-shadow: 0 4px 16px rgba(219,39,119,0.3); }
+  /* HELPERS */
+  .g-main{background:var(--grad-main);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .g-warm{background:var(--grad-warm);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
+  .g-cool{background:var(--grad-cool);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
 
-  /* ── CTA ── */
-  .cta-wrap { background: linear-gradient(135deg,rgba(109,40,217,0.06),rgba(8,145,178,0.04)); border: 1.5px solid rgba(109,40,217,0.15); border-radius: var(--r2); padding: 2.5rem 1.5rem; text-align: center; }
-  .cta-wrap h2 { font-size: clamp(1.5rem,6vw,2.4rem); font-weight: 800; letter-spacing: -1px; line-height: 1.15; }
-  .cta-wrap p { color: var(--muted2); font-size: 0.9rem; margin: 0.8rem 0 2rem; line-height: 1.7; }
-  .cta-btns { display: flex; flex-direction: column; gap: 0.75rem; max-width: 320px; margin: 0 auto; }
-  .btn-wa { background: linear-gradient(135deg,#25d366,#128c7e); color: #fff; padding: 0.9rem 1.5rem; border-radius: 50px; font-weight: 700; font-size: 0.95rem; text-decoration: none; text-align: center; box-shadow: 0 4px 20px rgba(37,211,102,0.3); display: flex; align-items: center; justify-content: center; gap: 0.5rem; }
+  @keyframes up{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
+  @keyframes pulse{0%,100%{box-shadow:0 4px 20px rgba(37,211,102,.45);}50%{box-shadow:0 4px 32px rgba(37,211,102,.7);}}
 
-  /* ── FOOTER ── */
-  footer { background: var(--text); color: rgba(255,255,255,0.75); padding: 2rem 1.2rem; text-align: center; position: relative; z-index: 1; }
-  .logo-f { font-size: 1rem; font-weight: 800; display: block; margin-bottom: 1rem; background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .foot-links { display: flex; justify-content: center; flex-wrap: wrap; gap: 1.2rem; list-style: none; margin-bottom: 1rem; }
-  .foot-links a { color: rgba(255,255,255,0.55); text-decoration: none; font-size: 0.82rem; transition: color .2s; }
-  .foot-links a:hover { color: #fff; }
-  .foot-copy { font-size: 0.75rem; color: rgba(255,255,255,0.35); }
-
-  /* ── WA FLOAT ── */
-  .wa-float { position: fixed; bottom: 1.5rem; right: 1.2rem; width: 52px; height: 52px; border-radius: 50%; background: linear-gradient(135deg,#25d366,#128c7e); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; text-decoration: none; box-shadow: 0 4px 20px rgba(37,211,102,0.45); z-index: 199; animation: pulse 2.5s infinite; }
-
-  /* ── HELPERS ── */
-  .g-main { background: var(--grad-main); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .g-warm { background: var(--grad-warm); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-  .g-cool { background: var(--grad-cool); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-
-  @keyframes up { from { opacity:0; transform:translateY(20px); } to { opacity:1; transform:translateY(0); } }
-  @keyframes pulse { 0%,100% { box-shadow:0 4px 20px rgba(37,211,102,0.45); } 50% { box-shadow:0 4px 32px rgba(37,211,102,0.7); } }
-
-  /* ── DESKTOP ── */
-  @media (min-width: 768px) {
-    nav { padding: 1rem 5%; }
-    .logo { font-size: 1.2rem; }
-    .nav-links { display: flex; }
-    section { padding: 5rem 5%; }
-    .hero { padding: 7rem 5% 4rem; }
-    .hero-btns { flex-direction: row; max-width: none; justify-content: center; }
-    .hero-stats { grid-template-columns: repeat(4,1fr); max-width: 640px; }
-    .why-grid { grid-template-columns: repeat(3,1fr); gap: 1.2rem; }
-    .why-card h3 { font-size: 0.95rem; }
-    .why-card p { font-size: 0.84rem; }
-    .ad-explainer { grid-template-columns: 1fr 1fr; }
-    .price-grid { grid-template-columns: repeat(4,1fr); gap: 1rem; }
-    .proof-list { display: grid; grid-template-columns: repeat(2,1fr); }
-    .how-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: start; }
-    footer { display: flex; align-items: center; justify-content: space-between; text-align: left; }
-    .logo-f { display: inline; margin-bottom: 0; }
-    .foot-links { margin-bottom: 0; }
-    .cta-btns { flex-direction: row; justify-content: center; max-width: none; }
-    .social-bar { flex-wrap: nowrap; }
+  /* DESKTOP */
+  @media(min-width:768px){
+    nav{padding:1rem 5%;}
+    .logo{font-size:1.2rem;}
+    .nav-links{display:flex;}
+    section{padding:5rem 5%;}
+    .hero{padding:7rem 5% 4rem;}
+    .hero-btns{flex-direction:row;max-width:none;justify-content:center;}
+    .hero-stats{grid-template-columns:repeat(4,1fr);max-width:640px;}
+    .why-grid{grid-template-columns:repeat(3,1fr);gap:1.2rem;}
+    .why-card h3{font-size:.95rem;}
+    .why-card p{font-size:.84rem;}
+    .proof-list{display:grid;grid-template-columns:repeat(2,1fr);}
+    .how-layout{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start;}
+    .price-cards{grid-template-columns:repeat(3,1fr);}
+    footer{display:flex;align-items:center;justify-content:space-between;text-align:left;}
+    .logo-f{display:inline;margin-bottom:0;}
+    .foot-links{margin-bottom:0;}
+    .cta-btns{flex-direction:row;justify-content:center;max-width:none;}
+    .social-bar{flex-wrap:nowrap;}
   }
 </style>
 </head>
@@ -266,15 +256,13 @@
   <p class="sec-sub">Every view comes from official Google Ads — fully reportable, fully real.</p>
   <div class="why-grid">
     <div class="why-card"><span class="why-icon">🎯</span><h3>Google Ads Powered</h3><p>No bots. All views via official Google Ads campaigns only.</p></div>
-    <div class="why-card"><span class="why-icon">🎥</span><h3>Live Screen Proof</h3><p>Screen recordings with live refresh — every single order.</p></div>
-    <div class="why-card"><span class="why-icon">💸</span><h3>Unbeatable Prices</h3><p>70–80% of market rate. More views for less money, always.</p></div>
+    <div class="why-card"><span class="why-icon">🎥</span><h3>Live Screen Proof</h3><p>Screen recordings with live page refresh — every single order.</p></div>
+    <div class="why-card"><span class="why-icon">💸</span><h3>Unbeatable Prices</h3><p>Highly competitive pricing. More views for less money, always.</p></div>
     <div class="why-card"><span class="why-icon">📊</span><h3>Detailed Reports</h3><p>Analytics screenshots + full campaign data after delivery.</p></div>
     <div class="why-card"><span class="why-icon">📱</span><h3>App Promotion</h3><p>Real installs via Google UAC — target by country & device.</p></div>
-    <div class="why-card"><span class="why-icon">⚡</span><h3>Fast Delivery</h3><p>Campaign goes live within 24 hours of payment confirmation.</p></div>
+    <div class="why-card"><span class="why-icon">⚡</span><h3>Fast Delivery</h3><p>Campaign live within 24 hours of payment confirmation.</p></div>
   </div>
-
-  <!-- Social Links -->
-  <div class="social-bar" style="margin-top:2.5rem">
+  <div class="social-bar">
     <a href="https://wa.me/919547803436" class="soc-btn soc-wa" target="_blank">💬 WhatsApp Us</a>
     <a href="https://wa.me/919547803436?text=Hi%2C%20I%20found%20you%20on%20Instagram!" class="soc-btn soc-ig" target="_blank">📸 Instagram</a>
   </div>
@@ -296,218 +284,175 @@
     </div>
   </div>
 
-  <!-- IN-FEED -->
+  <!-- ── IN-FEED ── -->
   <div id="infeed" class="pricing-section active">
     <div class="tab-body">
       <div class="ad-explainer">
-        <div class="ad-type-card">
-          <div class="at-head">
-            <span class="at-badge" style="background:var(--grad-main)">In-Feed</span>
-            <span class="at-title">What is In-Feed?</span>
-          </div>
-          <p class="at-desc">Your video appears as a sponsored result on YouTube's <strong>homepage, search results & suggested videos</strong> sidebar. The viewer sees your thumbnail and actively clicks to watch — higher intent views.</p>
-          <p class="at-targets">✅ Available targets: <span>India · State-wise · Any Google Ads supported country</span></p>
-          <p class="at-targets" style="margin-top:.3rem">❌ <span style="color:var(--muted)">Worldwide (WW) targeting not supported for In-Feed</span></p>
+        <div class="at-head">
+          <span class="at-badge" style="background:var(--grad-main)">In-Feed</span>
+          <span class="at-title">What is In-Feed?</span>
         </div>
+        <p class="at-desc">Your video appears as a sponsored result on YouTube's <strong>homepage, search results & suggested videos</strong>. The viewer actively clicks to watch — higher intent, better audience quality.</p>
+        <p class="at-note at-yes">✅ Available targets: India-wide · State-wise · Any Google Ads supported country</p>
+        <p class="at-note at-no">❌ Worldwide (WW) bulk targeting is not supported for In-Feed format</p>
       </div>
 
-      <div class="sec-divider">🇮🇳 India Targeted — In-Feed</div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">10K Views</div><div class="price-type">India · In-Feed</div>
-          <div class="price-amount">₹700</div><div class="price-note">₹70 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Proof Included</li><li>24hr Start</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">25K Views</div><div class="price-type">India · In-Feed</div>
-          <div class="price-amount">₹1,625</div><div class="price-note">₹65 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Proof Included</li><li>Analytics Report</li></ul>
-        </div>
-        <div class="price-card hot">
-          <div class="hot-tag">Popular</div>
-          <div class="price-qty">50K Views</div><div class="price-type">India · In-Feed</div>
-          <div class="price-amount">₹3,000</div><div class="price-note">₹60 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Analytics Report</li><li>Priority Support</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">1 Lakh Views</div><div class="price-type">India · In-Feed</div>
-          <div class="price-amount">₹5,500</div><div class="price-note">₹55 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Full Report</li><li>Priority Support</li></ul>
-        </div>
+      <div class="sec-div">🇮🇳 India Targeted — In-Feed</div>
+      <div class="price-table-wrap">
+        <table>
+          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr><td>10,000 Views</td><td class="rate-col">₹95 / 1K</td><td class="price-col">₹950</td></tr>
+            <tr><td>25,000 Views</td><td class="rate-col">₹92 / 1K</td><td class="price-col">₹2,300</td></tr>
+            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹88 / 1K</td><td class="price-col">₹4,400</td></tr>
+            <tr><td>1,00,000 Views</td><td class="rate-col">₹85 / 1K</td><td class="price-col">₹8,500</td></tr>
+            <tr><td>5,00,000 Views</td><td class="rate-col">₹80 / 1K</td><td class="price-col">₹40,000</td></tr>
+            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹75 / 1K</td><td class="price-col">₹75,000</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="sec-divider">📍 State-wise Targeted — In-Feed</div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">10K Views</div><div class="price-type">State · In-Feed</div>
-          <div class="price-amount">₹900</div><div class="price-note">₹90 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Proof Included</li><li>24hr Start</li></ul>
-        </div>
-        <div class="price-card hot">
-          <div class="hot-tag">Popular</div>
-          <div class="price-qty">25K Views</div><div class="price-type">State · In-Feed</div>
-          <div class="price-amount">₹2,000</div><div class="price-note">₹80 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Analytics Report</li><li>Priority Support</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">50K Views</div><div class="price-type">State · In-Feed</div>
-          <div class="price-amount">₹3,750</div><div class="price-note">₹75 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Full Report</li><li>Priority Support</li></ul>
-        </div>
+      <div class="sec-div">📍 State-wise Targeted — In-Feed</div>
+      <div class="price-table-wrap">
+        <table>
+          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr><td>10,000 Views</td><td class="rate-col">₹115 / 1K</td><td class="price-col">₹1,150</td></tr>
+            <tr><td>25,000 Views</td><td class="rate-col">₹112 / 1K</td><td class="price-col">₹2,800</td></tr>
+            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹108 / 1K</td><td class="price-col">₹5,400</td></tr>
+            <tr><td>1,00,000 Views</td><td class="rate-col">₹105 / 1K</td><td class="price-col">₹10,500</td></tr>
+            <tr><td>5,00,000 Views</td><td class="rate-col">₹100 / 1K</td><td class="price-col">₹50,000</td></tr>
+            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹95 / 1K</td><td class="price-col">₹95,000</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="price-foot">📍 Available states: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Gujarat & more. Other countries also available — ask on WhatsApp.</p>
+      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Other countries also available — ask on WhatsApp for custom quote.</p>
     </div>
   </div>
 
-  <!-- IN-STREAM -->
+  <!-- ── IN-STREAM ── -->
   <div id="instream" class="pricing-section">
     <div class="tab-body">
       <div class="ad-explainer">
-        <div class="ad-type-card">
-          <div class="at-head">
-            <span class="at-badge" style="background:var(--grad-warm)">In-Stream</span>
-            <span class="at-title">What is In-Stream?</span>
-          </div>
-          <p class="at-desc">Your video plays as a <strong>skippable ad before or during another YouTube video</strong>. View is counted after the viewer watches at least 30 seconds. High reach, great for brand awareness.</p>
-          <p class="at-targets">✅ Available targets: <span>Worldwide (WW) · India · State-wise · Any Google Ads supported country</span></p>
+        <div class="at-head">
+          <span class="at-badge" style="background:var(--grad-warm)">In-Stream</span>
+          <span class="at-title">What is In-Stream?</span>
         </div>
+        <p class="at-desc">Your video plays as a <strong>skippable ad before or during another YouTube video</strong>. View is counted after the viewer watches at least 30 seconds. Maximum reach, perfect for brand awareness & viral growth.</p>
+        <p class="at-note at-yes">✅ Available targets: Worldwide (WW) · India-wide · State-wise · Any Google Ads supported country</p>
       </div>
 
-      <div class="sec-divider">🌍 Worldwide — In-Stream</div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">10K Views</div><div class="price-type">Worldwide · In-Stream</div>
-          <div class="price-amount">₹550</div><div class="price-note">₹55 per 1,000 views</div>
-          <ul class="price-feats"><li>Global Reach</li><li>Proof Included</li><li>24hr Start</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">25K Views</div><div class="price-type">Worldwide · In-Stream</div>
-          <div class="price-amount">₹1,250</div><div class="price-note">₹50 per 1,000 views</div>
-          <ul class="price-feats"><li>Global Reach</li><li>Proof Included</li><li>Analytics Report</li></ul>
-        </div>
-        <div class="price-card hot">
-          <div class="hot-tag">Popular</div>
-          <div class="price-qty">50K Views</div><div class="price-type">Worldwide · In-Stream</div>
-          <div class="price-amount">₹2,250</div><div class="price-note">₹45 per 1,000 views</div>
-          <ul class="price-feats"><li>Global Reach</li><li>Analytics Report</li><li>Priority Support</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">1 Lakh Views</div><div class="price-type">Worldwide · In-Stream</div>
-          <div class="price-amount">₹5,000</div><div class="price-note">₹50 per 1,000 views</div>
-          <ul class="price-feats"><li>Global Reach</li><li>Full Report</li><li>Priority Support</li></ul>
-        </div>
+      <div class="sec-div">🌍 Worldwide — In-Stream (Skip Ads)</div>
+      <div class="price-table-wrap">
+        <table>
+          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr><td>10,000 Views</td><td class="rate-col">₹45 / 1K</td><td class="price-col">₹450</td></tr>
+            <tr><td>25,000 Views</td><td class="rate-col">₹44 / 1K</td><td class="price-col">₹1,100</td></tr>
+            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹43 / 1K</td><td class="price-col">₹2,150</td></tr>
+            <tr><td>1,00,000 Views</td><td class="rate-col">₹42 / 1K</td><td class="price-col">₹4,200</td></tr>
+            <tr><td>5,00,000 Views</td><td class="rate-col">₹40 / 1K</td><td class="price-col">₹20,000</td></tr>
+            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹38 / 1K</td><td class="price-col">₹38,000</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="sec-divider">🇮🇳 India Targeted — In-Stream</div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">10K Views</div><div class="price-type">India · In-Stream</div>
-          <div class="price-amount">₹750</div><div class="price-note">₹75 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Proof Included</li><li>24hr Start</li></ul>
-        </div>
-        <div class="price-card hot">
-          <div class="hot-tag">Popular</div>
-          <div class="price-qty">50K Views</div><div class="price-type">India · In-Stream</div>
-          <div class="price-amount">₹3,250</div><div class="price-note">₹65 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Analytics Report</li><li>Priority Support</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">1 Lakh Views</div><div class="price-type">India · In-Stream</div>
-          <div class="price-amount">₹5,500</div><div class="price-note">₹55 per 1,000 views</div>
-          <ul class="price-feats"><li>India Targeted</li><li>Full Report</li><li>Priority Support</li></ul>
-        </div>
+      <div class="sec-div">🇮🇳 India Targeted — In-Stream (Skip Ads)</div>
+      <div class="price-table-wrap">
+        <table>
+          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr><td>10,000 Views</td><td class="rate-col">₹68 / 1K</td><td class="price-col">₹680</td></tr>
+            <tr><td>25,000 Views</td><td class="rate-col">₹66 / 1K</td><td class="price-col">₹1,650</td></tr>
+            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹64 / 1K</td><td class="price-col">₹3,200</td></tr>
+            <tr><td>1,00,000 Views</td><td class="rate-col">₹62 / 1K</td><td class="price-col">₹6,200</td></tr>
+            <tr><td>5,00,000 Views</td><td class="rate-col">₹60 / 1K</td><td class="price-col">₹30,000</td></tr>
+            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹58 / 1K</td><td class="price-col">₹58,000</td></tr>
+          </tbody>
+        </table>
       </div>
 
-      <div class="sec-divider">📍 State-wise Targeted — In-Stream</div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">10K Views</div><div class="price-type">State · In-Stream</div>
-          <div class="price-amount">₹950</div><div class="price-note">₹95 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Proof Included</li><li>24hr Start</li></ul>
-        </div>
-        <div class="price-card hot">
-          <div class="hot-tag">Popular</div>
-          <div class="price-qty">25K Views</div><div class="price-type">State · In-Stream</div>
-          <div class="price-amount">₹2,125</div><div class="price-note">₹85 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Analytics Report</li><li>Priority Support</li></ul>
-        </div>
-        <div class="price-card">
-          <div class="price-qty">50K Views</div><div class="price-type">State · In-Stream</div>
-          <div class="price-amount">₹4,000</div><div class="price-note">₹80 per 1,000 views</div>
-          <ul class="price-feats"><li>Single State</li><li>Full Report</li><li>Priority Support</li></ul>
-        </div>
+      <div class="sec-div">📍 State-wise Targeted — In-Stream (Skip Ads)</div>
+      <div class="price-table-wrap">
+        <table>
+          <thead><tr><th>Views</th><th>Rate per 1K</th><th>Total Price</th></tr></thead>
+          <tbody>
+            <tr><td>10,000 Views</td><td class="rate-col">₹98 / 1K</td><td class="price-col">₹980</td></tr>
+            <tr><td>25,000 Views</td><td class="rate-col">₹96 / 1K</td><td class="price-col">₹2,400</td></tr>
+            <tr class="row-hot"><td>50,000 Views <span class="pop-badge">Popular</span></td><td class="rate-col">₹94 / 1K</td><td class="price-col">₹4,700</td></tr>
+            <tr><td>1,00,000 Views</td><td class="rate-col">₹92 / 1K</td><td class="price-col">₹9,200</td></tr>
+            <tr><td>5,00,000 Views</td><td class="rate-col">₹88 / 1K</td><td class="price-col">₹44,000</td></tr>
+            <tr><td>10,00,000 Views (1M)</td><td class="rate-col">₹85 / 1K</td><td class="price-col">₹85,000</td></tr>
+          </tbody>
+        </table>
       </div>
-      <p class="price-foot">📍 Available states: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Gujarat & more. Custom quantities available — DM on WhatsApp.</p>
+      <p class="price-foot">📍 States: West Bengal, Maharashtra, Delhi, UP, Tamil Nadu, Karnataka, Punjab, Gujarat & more. Bulk orders above 1M — contact for special pricing.</p>
     </div>
   </div>
 
-  <!-- APP -->
+  <!-- ── APP ── -->
   <div id="app" class="pricing-section">
     <div class="tab-body">
       <div class="ad-explainer">
-        <div class="ad-type-card">
-          <div class="at-head">
-            <span class="at-badge" style="background:var(--grad-cool)">Google UAC</span>
-            <span class="at-title">How App Promotion Works</span>
-          </div>
-          <p class="at-desc">We run <strong>Google Universal App Campaigns (UAC)</strong> for your app — showing ads across Google Search, Play Store, YouTube & Display Network. You get real installs from real users. No fake downloads.</p>
-          <p class="at-targets">✅ Targets: <span>India · Worldwide · Any country · Android & iOS supported</span></p>
+        <div class="at-head">
+          <span class="at-badge" style="background:var(--grad-cool)">Google UAC</span>
+          <span class="at-title">How App Promotion Works</span>
         </div>
+        <p class="at-desc">We run <strong>Google Universal App Campaigns (UAC)</strong> for your app — ads appear across Google Search, Play Store, YouTube & Display Network. Real installs from real users. No fake downloads, ever.</p>
+        <p class="at-note at-yes">✅ Targets: India · Worldwide · Any country · Android & iOS · Device type targeting</p>
       </div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">500 Installs</div><div class="price-type">App Promotion · UAC</div>
-          <div class="price-amount">₹1,500</div><div class="price-note">~₹3 per install</div>
-          <ul class="price-feats"><li>Google UAC</li><li>India / WW</li><li>Proof Included</li></ul>
+      <div class="price-cards">
+        <div class="p-card">
+          <div class="p-qty">500 Installs</div><div class="p-type">App Promotion · UAC</div>
+          <div class="p-amount">₹1,500</div><div class="p-note">~₹3 per install</div>
+          <ul class="p-feats"><li>Google UAC</li><li>India / WW</li><li>Proof Included</li></ul>
         </div>
-        <div class="price-card hot">
+        <div class="p-card hot">
           <div class="hot-tag">Popular</div>
-          <div class="price-qty">1,000 Installs</div><div class="price-type">App Promotion · UAC</div>
-          <div class="price-amount">₹2,500</div><div class="price-note">~₹2.5 per install</div>
-          <ul class="price-feats"><li>Google UAC</li><li>Country Targeting</li><li>Analytics Report</li></ul>
+          <div class="p-qty">1,000 Installs</div><div class="p-type">App Promotion · UAC</div>
+          <div class="p-amount">₹2,800</div><div class="p-note">~₹2.8 per install</div>
+          <ul class="p-feats"><li>Google UAC</li><li>Country Targeting</li><li>Analytics Report</li></ul>
         </div>
-        <div class="price-card">
-          <div class="price-qty">2,500 Installs</div><div class="price-type">App Promotion · UAC</div>
-          <div class="price-amount">₹5,500</div><div class="price-note">~₹2.2 per install</div>
-          <ul class="price-feats"><li>Google UAC</li><li>Advanced Targeting</li><li>Full Campaign Report</li></ul>
+        <div class="p-card">
+          <div class="p-qty">2,500 Installs</div><div class="p-type">App Promotion · UAC</div>
+          <div class="p-amount">₹6,000</div><div class="p-note">~₹2.4 per install</div>
+          <ul class="p-feats"><li>Google UAC</li><li>Advanced Targeting</li><li>Full Report</li></ul>
         </div>
       </div>
-      <p class="price-foot">* Custom quantities available. Both Android (Play Store) & iOS (App Store) supported. Contact on WhatsApp for custom campaign setup.</p>
+      <p class="price-foot">* Custom quantities available. Both Android (Play Store) & iOS (App Store) supported. Contact on WhatsApp for bulk or country-specific campaigns.</p>
     </div>
   </div>
 
-  <!-- GOOGLE ADS -->
+  <!-- ── GOOGLE ADS ── -->
   <div id="gads" class="pricing-section">
     <div class="tab-body">
       <div class="ad-explainer">
-        <div class="ad-type-card">
-          <div class="at-head">
-            <span class="at-badge" style="background:var(--grad-warm)">Discounted Spend</span>
-            <span class="at-title">How It Works</span>
-          </div>
-          <p class="at-desc">You give us your ad budget — we <strong>set up and run your complete Google Ads campaign</strong> and only charge you <strong>70–80% of the actual spend</strong>. You save 20–30% on every campaign with full transparency and live dashboard access.</p>
-          <p class="at-targets">✅ Supported: <span>Search · Display · YouTube · Shopping — all campaign types</span></p>
+        <div class="at-head">
+          <span class="at-badge" style="background:var(--grad-warm)">Discounted Spend</span>
+          <span class="at-title">How It Works</span>
         </div>
+        <p class="at-desc">You give us your ad budget — we <strong>set up and run your complete Google Ads campaign</strong> and only charge <strong>70–80% of the actual spend</strong>. You save 20–30% on every campaign with full proof and dashboard screenshots.</p>
+        <p class="at-note at-yes">✅ Supported: Search · Display · YouTube · Shopping — all campaign types</p>
       </div>
-      <div class="price-grid">
-        <div class="price-card">
-          <div class="price-qty">₹1,000 Budget</div><div class="price-type">Google Ads · Campaign</div>
-          <div class="price-amount">₹700–800</div><div class="price-note">You save ₹200–300</div>
-          <ul class="price-feats"><li>Full Setup</li><li>Ad Copy Included</li><li>Final Report</li></ul>
+      <div class="price-cards">
+        <div class="p-card">
+          <div class="p-qty">₹1,000 Budget</div><div class="p-type">You Pay Only</div>
+          <div class="p-amount">₹700–800</div><div class="p-note">You save ₹200–300</div>
+          <ul class="p-feats"><li>Full Campaign Setup</li><li>Ad Copy Included</li><li>Final Report</li></ul>
         </div>
-        <div class="price-card hot">
+        <div class="p-card hot">
           <div class="hot-tag">Popular</div>
-          <div class="price-qty">₹3,000 Budget</div><div class="price-type">Google Ads · Campaign</div>
-          <div class="price-amount">₹2,100–2,400</div><div class="price-note">You save ₹600–900</div>
-          <ul class="price-feats"><li>Full Setup</li><li>Optimization</li><li>Mid + Final Report</li></ul>
+          <div class="p-qty">₹3,000 Budget</div><div class="p-type">You Pay Only</div>
+          <div class="p-amount">₹2,100–2,400</div><div class="p-note">You save ₹600–900</div>
+          <ul class="p-feats"><li>Full Campaign Setup</li><li>Optimization</li><li>Mid + Final Report</li></ul>
         </div>
-        <div class="price-card">
-          <div class="price-qty">₹5,000+ Budget</div><div class="price-type">Google Ads · Custom</div>
-          <div class="price-amount">Custom</div><div class="price-note">Contact for quote</div>
-          <ul class="price-feats"><li>Dedicated Management</li><li>Weekly Reports</li><li>WhatsApp Support</li></ul>
+        <div class="p-card">
+          <div class="p-qty">₹5,000+ Budget</div><div class="p-type">Custom</div>
+          <div class="p-amount">Custom</div><div class="p-note">Contact for quote</div>
+          <ul class="p-feats"><li>Dedicated Management</li><li>Weekly Reports</li><li>WhatsApp Support</li></ul>
         </div>
       </div>
-      <p class="price-foot">* Example: ₹1,000 ad budget → you pay only ₹700–800, we spend the full ₹1,000 on your campaign. Dashboard screenshots shared as proof.</p>
+      <p class="price-foot">* Example: ₹3,000 ad budget → you pay only ₹2,100–2,400, we spend the full ₹3,000 on your campaign. Dashboard screenshots shared as proof of actual spend.</p>
     </div>
   </div>
 </section>
@@ -525,7 +470,7 @@
   </div>
 </section>
 
-<!-- HOW -->
+<!-- HOW IT WORKS -->
 <section id="how">
   <div class="how-layout">
     <div>
@@ -545,7 +490,7 @@
       <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Feed%20YouTube%20Views!" class="qo-btn qo-wa" target="_blank">📰 In-Feed Views</a>
       <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20In-Stream%20YouTube%20Views!" class="qo-btn qo-in" target="_blank">▶️ In-Stream Views</a>
       <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20App%20Promotion%20via%20Google%20UAC!" class="qo-btn qo-app" target="_blank">📱 App Promotion</a>
-      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20to%20run%20Google%20Ads%20at%20discounted%20rates!" class="qo-btn qo-gad" target="_blank">🎯 Google Ads Campaign</a>
+      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20want%20Google%20Ads%20at%20discounted%20rates!" class="qo-btn qo-gad" target="_blank">🎯 Google Ads Campaign</a>
       <p class="qo-hint">⚡ Avg reply under 1 hr · 📍 Serving clients across India</p>
     </div>
   </div>
@@ -558,7 +503,7 @@
     <p>Drop a message — get a custom quote in under 1 hour.</p>
     <div class="cta-btns">
       <a href="https://wa.me/919547803436?text=Hi%20Biswajit%2C%20I%27m%20interested%20in%20your%20services!" class="btn-wa" target="_blank">💬 Chat on WhatsApp</a>
-      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20found%20you%20on%20Instagram!" class="soc-btn soc-ig" target="_blank" style="flex:none;padding:.85rem 1.5rem;border-radius:50px">📸 Instagram</a>
+      <a href="https://wa.me/919547803436?text=Hi%2C%20I%20found%20you%20on%20Instagram!" class="soc-btn soc-ig" target="_blank" style="border-radius:50px;padding:.85rem 1.5rem;flex:none;">📸 Instagram</a>
     </div>
   </div>
 </section>
@@ -577,9 +522,9 @@
 </footer>
 
 <script>
-  function showTab(id, el) {
-    document.querySelectorAll('.pricing-section').forEach(s => s.classList.remove('active'));
-    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  function showTab(id,el){
+    document.querySelectorAll('.pricing-section').forEach(s=>s.classList.remove('active'));
+    document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
     document.getElementById(id).classList.add('active');
     el.classList.add('active');
   }
